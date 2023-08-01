@@ -6,7 +6,7 @@
     "description": "API for managing todos"
   },
   "paths": {
-    "/todos": {
+    "/api/todos": {
       "get": {
         "operationId": "listTodos",
         "summary": "List all todos",
@@ -52,7 +52,7 @@
         }
       }
     },
-    "/todos/{id}": {
+    "/api/todos/{id}": {
       "put": {
         "operationId": "updateTodo",
         "summary": "Update a todo",
