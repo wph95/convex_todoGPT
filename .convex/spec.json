@@ -1,0 +1,62 @@
+{
+  "plugins": {
+    "gpt_plugin": false,
+    "doc": false,
+    "test": false
+  },
+  "entities": [
+    {
+      "name": "Todo",
+      "fields": [
+        {
+          "name": "id",
+          "type": "id",
+          "is_required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "is_required": true
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "completed",
+          "type": "boolean",
+          "is_required": true
+        }
+      ]
+    }
+  ],
+  "apis": [
+    {
+      "operationId": "listTodos",
+      "relation_entities": ["Todo"]
+    },
+    {
+      "operationId": "createTodo",
+      "relation_entities": ["Todo"]
+    },
+    {
+      "operationId": "updateTodo",
+      "relation_entities": ["Todo"]
+    }
+  ],
+  "pages": [
+    {
+      "name": "TodoPage",
+      "path": "/todos",
+      "relation": {
+        "operations": ["listTodos", "createTodo", "updateTodo"],
+        "pages": []
+      }
+    }
+  ],
+  "info": {
+    "title": "Todo List App",
+    "version": "v1",
+    "description": "A simple todo list app where you can list, create, and update todos in one page."
+  }
+}

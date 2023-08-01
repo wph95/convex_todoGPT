@@ -1,0 +1,106 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Todo API",
+    "version": "v1",
+    "description": "API for managing todos"
+  },
+  "paths": {
+    "/todos": {
+      "get": {
+        "operationId": "listTodos",
+        "summary": "List all todos",
+        "responses": {
+          "200": {
+            "description": "List of todos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Todo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTodo",
+        "summary": "Create a new todo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "put": {
+        "operationId": "updateTodo",
+        "summary": "Update a todo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Todo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        },
+        "required": ["id", "title", "completed"]
+      }
+    },
+    "responses": {}
+  }
+}
